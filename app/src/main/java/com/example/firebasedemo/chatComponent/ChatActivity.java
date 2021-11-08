@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class ChatActivity extends AppCompatActivity {
     private Button image;
@@ -67,7 +68,8 @@ public class ChatActivity extends AppCompatActivity {
         roomName=getIntent().getExtras().getString("room_name").toString();
         System.out.println(userName);
         System.out.println(roomName);
-        setTitle("Room-"+roomName);
+        //setTitle("Room-"+roomName);
+        setTitle(roomName.replaceFirst(Pattern.quote(userName), ""));
         root=FirebaseDatabase.getInstance().getReference().child("chatRoom/"+roomName);
         init(savedInstanceState);
         initImageData(savedInstanceState);
