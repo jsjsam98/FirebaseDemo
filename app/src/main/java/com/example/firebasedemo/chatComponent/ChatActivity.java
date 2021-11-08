@@ -1,5 +1,8 @@
 package com.example.firebasedemo.chatComponent;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -197,6 +202,7 @@ public class ChatActivity extends AppCompatActivity {
                         messageAdapter.notifyItemInserted(messageList.size());
                         recyclerView.scrollToPosition(messageList.size()-1);
                     }
+                    notification();
                 }
 
                 @Override
@@ -209,6 +215,26 @@ public class ChatActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    private void notification(){
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            NotificationChannel channel=new NotificationChannel("n","n", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager=getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(this,"n")
+                .setContentText("code")
+                .setSmallIcon(R.drawable.common_full_open_on_phone)
+                .setAutoCancel(true)
+                .setContentText("Notification: New Message");
+
+        NotificationManagerCompat managerCompat=NotificationManagerCompat.from(this);
+        managerCompat.notify(999,builder.build());
+
+
     }
 
     private void createRecyclerView(){
