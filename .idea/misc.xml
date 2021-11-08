@@ -3,14 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/App/FirebaseDemo/app/src/main/res/layout/activity_chat.xml" value="0.30512820512820515" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.16145833333333334" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.16145833333333334" />
+        <entry key="app/src/main/res/layout/activity_chat.xml" value="0.36594202898550726" />
+        <entry key="app/src/main/res/layout/activity_chat_room.xml" value="0.36594202898550726" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.2378419452887538" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.1234375" />
+        <entry key="app/src/main/res/layout/message_card.xml" value="0.36594202898550726" />
       </map>
     </option>
   </component>

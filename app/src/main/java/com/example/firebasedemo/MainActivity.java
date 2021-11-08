@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firebasedemo.chatComponent.ChatActivity;
+import com.example.firebasedemo.chatComponent.ChatRoomActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText edit;
     private Button add;
     private ListView listView;
+    private Button test;
 
     private TextView textUsername;
     private String userName;
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        // get current user
         GlobalClass globalClass = (GlobalClass) getApplicationContext();
         userName = globalClass.getUsername();
 
@@ -55,8 +59,20 @@ public class MainActivity extends AppCompatActivity {
         add = findViewById(R.id.add);
         listView = findViewById(R.id.listView);
         textUsername = findViewById(R.id.textView_username);
-
+        test = findViewById(R.id.test);
         textUsername.setText(userName);
+
+        //
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChatRoomActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+
         // set up onClick Listener
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +97,8 @@ public class MainActivity extends AppCompatActivity {
 
                     // check exist
                     DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                    // user
                     mDatabase.child("users").child(txt_name).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,11 +133,58 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
+                    mDatabase.child("users").child(txt_name).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                // Exist!
+                                DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(txt_name).child("connection");
+                                ref.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                        if(task.isSuccessful()){
+                                            List<String> prev = (List<String>) task.getResult().getValue();
+
+                                            // check if the connection already exist
+                                            if(prev.contains(userName)){
+
+                                                // Toast.makeText(MainActivity.this, txt_name+" is alreay connected!", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                prev.add(userName);
+                                                ref.setValue(prev);
+                                            }
+
+                                        }
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(MainActivity.this, "The user you want to connect not exist!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
 
                 }
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "click + " + ((TextView)view).getText().toString() , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(),ChatActivity.class);
+                String targetUserName = ((TextView)view).getText().toString();
+                String uniqueRoomName = userName.compareTo(targetUserName) <= 0 ? userName + targetUserName : targetUserName + userName;
+                intent.putExtra("room_name", uniqueRoomName);
+                // intent.putExtra("user_name",userName);
+                startActivity(intent);
+            }
+        });
 
         // show the connection of current user
         ArrayList<String> list = new ArrayList<>();

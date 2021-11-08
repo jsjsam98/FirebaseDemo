@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.firebasedemo.GlobalClass;
 import com.example.firebasedemo.R;
 import com.example.firebasedemo.chatComponent.image.Image;
 import com.example.firebasedemo.chatComponent.image.ImageAdapter;
@@ -48,10 +49,16 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // get current user
+        GlobalClass globalClass = (GlobalClass) getApplicationContext();
+        userName = globalClass.getUsername();
+
         for(StickMessage s:messageList){
             System.out.println(s.toString());
         }
-        userName=getIntent().getExtras().getString("user_name").toString();
+
+        userName = userName;
+        // userName=getIntent().getExtras().getString("user_name").toString();
         roomName=getIntent().getExtras().getString("room_name").toString();
         System.out.println(userName);
         System.out.println(roomName);
