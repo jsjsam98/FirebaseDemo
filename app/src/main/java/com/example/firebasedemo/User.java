@@ -3,6 +3,7 @@ package com.example.firebasedemo;
 import java.sql.Connection;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,12 +14,10 @@ public class User {
 //    private Map<User, Map<Time,String>> messages;
 
 
-    public User() {
-    }
-
-    public User(String name, List<String> connection) {
+    public User(String name) {
         this.name = name;
-        this.connection = connection;
+        this.connection = new ArrayList<>();
+        connection.add(name);
     }
 
     public String getName() {
