@@ -3,7 +3,9 @@
     <string name="blank">Blank</string>
     <string name="log_out">log out</string>
     <string name="name">Name</string>
-    <string name="add">add</string>
+    <string name="add">add friend</string>
     <string name="test">test</string>
     <string name="username">Username:</string>
+    <string name="click_on_one_of_your_friend_below_to_start_chatting">Tap on one of your friends below to start chatting:</string>
+    <string name="type_a_name_below_to_add_a_friend">Type a name below to add a friend:</string>
 </resources>

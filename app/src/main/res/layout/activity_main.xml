@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/username"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -30,6 +31,13 @@
         android:layout_margin="10dp"
         />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/type_a_name_below_to_add_a_friend"
+        android:textColor="#000000" />
+
     <EditText
         android:id="@+id/edit"
         android:layout_width="match_parent"
@@ -37,12 +45,21 @@
         android:layout_margin="10dp"
         android:hint="@string/name"
         android:minHeight="48dp" />
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add"
         android:id="@+id/add"
-        android:layout_margin="10dp" />
+        android:layout_width="351dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/add" />
+
+    <TextView
+        android:id="@+id/chatInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/click_on_one_of_your_friend_below_to_start_chatting"
+        android:textColor="#000000"
+        android:textSize="14sp" />
 
     <ListView
         android:layout_width="match_parent"
