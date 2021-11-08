@@ -35,17 +35,19 @@
         android:text="add"
         android:id="@+id/add"
         android:layout_margin="10dp" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:id="@+id/test"
-        android:layout_margin="10dp"
-        />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
         android:id="@+id/listView"
         />
+
+    <Button
+        android:id="@+id/test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="test"
+        android:visibility="invisible" />
 </LinearLayout>
