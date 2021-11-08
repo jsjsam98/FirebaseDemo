@@ -6,7 +6,7 @@ Pair 1: Driver: Shangjun Jiang (Sam). Navigator: Hongming Zhang (Max).
 
 Pair 2: Driver: HungChit Ngai (Alex). Navigator: Guangpeng Wu.
 
-How to use:
+### How to use:
 
 Once opened, user could choose between register and login. 
 
