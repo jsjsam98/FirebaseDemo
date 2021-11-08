@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">FirebaseDemo</string>
+    <string name="blank">Blank</string>
+    <string name="log_out">log out</string>
+    <string name="name">Name</string>
+    <string name="add">add</string>
+    <string name="test">test</string>
+    <string name="username">Username:</string>
 </resources>

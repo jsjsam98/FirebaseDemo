@@ -7,18 +7,26 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:padding="20dp">
+
+    <TextView
+        android:id="@+id/usernameTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textColor="#000000" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView_username"
         android:layout_margin="10dp"
-        android:text="Blank"
+        android:text="@string/blank"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/logout"
-        android:text="log out"
+        android:text="@string/log_out"
         android:layout_margin="10dp"
         />
 
@@ -27,12 +35,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="Name"
+        android:hint="@string/name"
         android:minHeight="48dp" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="add"
+        android:text="@string/add"
         android:id="@+id/add"
         android:layout_margin="10dp" />
 
@@ -48,6 +56,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="test"
+        android:text="@string/test"
         android:visibility="invisible" />
 </LinearLayout>
